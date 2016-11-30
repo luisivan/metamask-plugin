@@ -195,6 +195,19 @@ ConfigManager.prototype.setData = function (data) {
   this.migrator.saveData(data)
 }
 
+
+// Notices //
+
+ConfigManager.prototype.getUnreadNotices = function () {
+  var notices = this.getNoticesList()
+  return notices.filter(notice => notice.read)
+}
+
+ConfigManager.prototype.getNoticesList = function () {
+  var data = this.getData()
+  return ('noticesList' in data) && data.noticesList
+}
+
 //
 // Tx
 //
