@@ -1,4 +1,5 @@
-const fs = requrie('fs')
+const EventEmitter = require('events').EventEmitter
+
 
 module.exports = class NoticeController extends EventEmitter {
 
@@ -8,20 +9,16 @@ module.exports = class NoticeController extends EventEmitter {
   }
 
   getState () {
-
     return {
-        unreadNotices: this.configManager.getUnreadNotices(),
-        notices: this.configManager.getNoticesList(),
-        
+      unreadNotices: this.configManager.getUnreadNotices(),
+      notices: this.configManager.getNoticesList(),
     }
   }
 
   displayLastUnreadNotice () {
-
   }
 
   markNoticeAsRead (notice) {
-
   }
 
 

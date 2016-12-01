@@ -3,6 +3,8 @@ const MetamaskConfig = require('../config.js')
 const migrations = require('./migrations')
 const rp = require('request-promise')
 const ethUtil = require('ethereumjs-util')
+const notices = require('../../../notices/notices.js')
+const extend = require('xtend')
 
 const TESTNET_RPC = MetamaskConfig.network.testnet
 const MAINNET_RPC = MetamaskConfig.network.mainnet
@@ -206,6 +208,19 @@ ConfigManager.prototype.getUnreadNotices = function () {
 ConfigManager.prototype.getNoticesList = function () {
   var data = this.getData()
   return ('noticesList' in data) && data.noticesList
+}
+
+ConfigManager.prototype.setNoticesList = function (list) {
+  var data = this.getData()
+  data.noticesList = list
+  this.setData(data)
+}
+
+ConfigManager.prototype.updateNoticesList = function () {
+  var data = this.getData()
+  var oldList = data.noticesList || {}
+  var newList = extend(notices, oldList)
+  this.setNoticesList(newList)
 }
 
 //
