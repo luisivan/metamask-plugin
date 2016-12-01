@@ -16,9 +16,11 @@ module.exports = class NoticeController extends EventEmitter {
   }
 
   displayLastUnreadNotice () {
+
   }
 
-  markNoticeAsRead (notice) {
+  markNoticeAsRead (noticeName) {
+
   }
 
 

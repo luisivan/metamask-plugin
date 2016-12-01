@@ -223,6 +223,13 @@ ConfigManager.prototype.updateNoticesList = function () {
   this.setNoticesList(newList)
 }
 
+ConfigManager.prototype.markNoticeRead = function (noticeName) {
+  var notices = this.getNoticesList()
+  notices[noticeName].read = true
+  this.setNoticesList(notices)
+}
+
+
 //
 // Tx
 //

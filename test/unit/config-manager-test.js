@@ -247,6 +247,17 @@ describe('config-manager', function() {
         assert.equal(newList.first_test.title, 'original')
       })
     })
+
+    describe('#markNoticeRead', function () {
+      it('should make a notice as read.', function () {
+        var testList = {first_test: {title: 'hello', read: false}}
+        configManager.setNoticesList(testList)
+        assert.ok(!testList.first_test.read)
+        configManager.markNoticeRead('first_test')
+        var newList = configManager.getNoticesList()
+        assert.ok(newList.first_test.read)
+      })
+    })
   })
 
   describe('transactions', function() {
