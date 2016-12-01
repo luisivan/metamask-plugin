@@ -202,7 +202,8 @@ ConfigManager.prototype.setData = function (data) {
 
 ConfigManager.prototype.getUnreadNotices = function () {
   var notices = this.getNoticesList()
-  return notices.filter(notice => notice.read)
+  var filteredNotices = notices.filter(notice => notice.read)
+  return (filteredNotices === []) ? false : filteredNotices
 }
 
 ConfigManager.prototype.getNoticesList = function () {
