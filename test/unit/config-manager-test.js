@@ -213,6 +213,34 @@ describe('config-manager', function() {
     })
   })
 
+  describe('notices', function() {
+    describe('#getNoticesList', function () {
+      it('should return false when new', function() {
+        var result = configManager.getNoticesList()
+        assert.ok(!result)
+      })
+    })
+
+    describe('#setNoticesList', function () {
+      it('should set the appropriate data', function () {
+        var testList = {test: 'hello'}
+        configManager.setNoticesList(testList)
+        assert.equal(configManager.getNoticesList().test, 'hello')
+      })
+    })
+
+    describe('#updateNoticesList', function () {
+      it('should integrate the latest changes from notices.js without overwriting', function () {
+        var testList = {test: 'hello'}
+        configManager.setNoticesList(testList)
+        configManager.updateNoticesList()
+        var newList = configManager.getNoticesList()
+        assert.equal(newList.test, 'hello')
+        assert.equal(newList.first_test.title, 'A test notice')
+      })
+    })
+  })
+
   describe('transactions', function() {
     beforeEach(function() {
       configManager._saveTxList([])

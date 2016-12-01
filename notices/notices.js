@@ -1,0 +1,1 @@
+module.exports = {"first_test":{"title":"A test notice","body":"Hello!"}}
