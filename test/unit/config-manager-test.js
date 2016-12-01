@@ -230,13 +230,21 @@ describe('config-manager', function() {
     })
 
     describe('#updateNoticesList', function () {
-      it('should integrate the latest changes from notices.js without overwriting', function () {
+      it('should integrate the latest changes from notices.js', function () {
         var testList = {test: 'hello'}
         configManager.setNoticesList(testList)
         configManager.updateNoticesList()
         var newList = configManager.getNoticesList()
         assert.equal(newList.test, 'hello')
         assert.equal(newList.first_test.title, 'A test notice')
+      })
+
+      it('should not overwrite any existing fields', function () {
+        var testList = {first_test: {title: 'original'}}
+        configManager.setNoticesList(testList)
+        configManager.updateNoticesList()
+        var newList = configManager.getNoticesList()
+        assert.equal(newList.first_test.title, 'original')
       })
     })
   })
