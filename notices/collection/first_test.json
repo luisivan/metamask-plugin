@@ -1,5 +1,7 @@
 {
+  "noticeName": "first_test",
   "title": "A test notice",
+  "date": "Mon Dec 05 2016",
   "body": "Hello!",
-  "read": true
+  "read": false
 }

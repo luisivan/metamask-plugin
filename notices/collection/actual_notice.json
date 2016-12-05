@@ -1,5 +1,7 @@
 {
+  "notice_name": "actual_notice",
   "title": "Dev Notices Rolling Out!",
+  "date": "Mon Dec 05 2016",
   "body": "Hello everyone! MetaMask is rolling out a new system for notifying users of alerts from the devs!",
-  "read": true
+  "read": false
 }
