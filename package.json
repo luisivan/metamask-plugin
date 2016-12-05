@@ -17,7 +17,8 @@
     "buildMock": "browserify ./mock-dev.js -o ./development/bundle.js",
     "testem": "npm run buildMock && testem",
     "ci": "npm run buildMock && npm run buildCiUnits && testem ci -P 2",
-    "announce": "node development/announcer.js"
+    "announce": "node development/announcer.js",
+    "generateNotice": "node development/notice-generator.js && node notices/genNotices.js"
   },
   "browserify": {
     "transform": [
@@ -121,6 +122,7 @@
     "mocha-jsdom": "^1.1.0",
     "mocha-sinon": "^1.1.5",
     "nock": "^8.0.0",
+    "prompt": "^1.0.0",
     "qs": "^6.2.0",
     "qunit": "^0.9.1",
     "sinon": "^1.17.3",
