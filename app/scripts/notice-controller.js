@@ -10,16 +10,19 @@ module.exports = class NoticeController extends EventEmitter {
   }
 
   getState () {
+    var unreadNotices = this.configManager.getUnreadNotices()
+
     return {
-      unreadNotices: this.configManager.getUnreadNotices(),
       notices: this.configManager.getNoticesList(),
-      markNoticeRead: this.configManager.markNoticeRead(),
+      activeNotice: !!unreadNotices,
+      lastUnreadNotice: this.lastUnreadNotice(),
     }
   }
 
   lastUnreadNotice () {
-    var notices = this.configManager.getUnreadNotices
+    var notices = this.configManager.getUnreadNotices()
     return (notices) ? notices[0] : null
   }
+
 
 }

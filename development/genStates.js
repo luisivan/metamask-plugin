@@ -7,7 +7,7 @@ const stateNames = fs.readdirSync(statesPath)
 const states = stateNames.reduce((result, stateFileName) => {
   const statePath = path.join(__dirname, 'states', stateFileName)
   const stateFile = fs.readFileSync(statePath).toString()
-  const state = JSON.parse(stateFile)
+  const state = JSON.parse(stateFile)k
   result[stateFileName.split('.')[0].replace(/-/g, ' ', 'g')] = state
   return result
 }, {})

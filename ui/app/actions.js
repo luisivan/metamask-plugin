@@ -34,6 +34,9 @@ var actions = {
   REVEAL_SEED_CONFIRMATION: 'REVEAL_SEED_CONFIRMATION',
   revealSeedConfirmation: revealSeedConfirmation,
   requestRevealSeed: requestRevealSeed,
+  // notices
+  markNoticeRead: markNoticeRead,
+  MARK_NOTICE_READ: 'MARK_NOTICE_READ',
   // unlock screen
   UNLOCK_IN_PROGRESS: 'UNLOCK_IN_PROGRESS',
   UNLOCK_FAILED: 'UNLOCK_FAILED',
@@ -348,6 +351,21 @@ function cancelMsg (msgData) {
 function cancelTx (txData) {
   background.cancelTransaction(txData.id)
   return actions.completedTx(txData.id)
+}
+
+//
+// notice
+//
+
+function markNoticeRead (notice) {
+  return (dispatch) => {
+    dispatch(this.showLoadingIndication())
+    background.markNoticeRead(notice, (err) => {
+      if (err) {
+        return console.err('Marking notice as read: failed.')
+      }
+    })
+  }
 }
 
 //

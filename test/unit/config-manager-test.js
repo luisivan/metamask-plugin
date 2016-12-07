@@ -250,10 +250,10 @@ describe('config-manager', function() {
 
     describe('#markNoticeRead', function () {
       it('should make a notice as read.', function () {
-        var testList = {first_test: {title: 'hello', read: false}}
+        var testList = {first_test: {notice_name: 'first_test', title: 'hello', read: false}}
         configManager.setNoticesList(testList)
         assert.ok(!testList.first_test.read)
-        configManager.markNoticeRead('first_test')
+        configManager.markNoticeRead(testList.first_test)
         var newList = configManager.getNoticesList()
         assert.ok(newList.first_test.read)
       })

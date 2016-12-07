@@ -3,7 +3,6 @@ const MetamaskConfig = require('../config.js')
 const migrations = require('./migrations')
 const rp = require('request-promise')
 const ethUtil = require('ethereumjs-util')
-const notices = require('../../../notices/notices.js')
 const extend = require('xtend')
 
 const TESTNET_RPC = MetamaskConfig.network.testnet
@@ -224,8 +223,9 @@ ConfigManager.prototype.updateNoticesList = function () {
   this.setNoticesList(newList)
 }
 
-ConfigManager.prototype.markNoticeRead = function (noticeName) {
+ConfigManager.prototype.markNoticeRead = function (notice) {
   var notices = this.getNoticesList()
+  var noticeName = notice.notice_name
   notices[noticeName].read = true
   this.setNoticesList(notices)
 }

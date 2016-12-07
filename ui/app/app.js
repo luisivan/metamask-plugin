@@ -10,6 +10,8 @@ const InitializeMenuScreen = require('./first-time/init-menu')
 const NewKeyChainScreen = require('./new-keychain')
 // unlock
 const UnlockScreen = require('./unlock')
+// notice
+const NoticeScreen = require('./components/notice')
 // accounts
 const AccountsScreen = require('./accounts')
 const AccountDetailScreen = require('./account-detail')
@@ -44,6 +46,7 @@ function mapStateToProps (state) {
     isUnlocked: state.metamask.isUnlocked,
     currentView: state.appState.currentView,
     activeAddress: state.appState.activeAddress,
+    activeNotice: state.metamask.activeNotice,
     transForward: state.appState.transForward,
     seedWords: state.metamask.seedWords,
     unconfTxs: state.metamask.unconfTxs,
@@ -370,6 +373,10 @@ App.prototype.renderPrimary = function () {
       default:
         return h(UnlockScreen, {key: 'locked'})
     }
+  }
+
+  if (props.activeNotice) {
+    return h(NoticeScreen, {key: 'notice'})
   }
 
   // show current view
